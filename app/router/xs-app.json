@@ -1,7 +1,13 @@
 {
   "welcomeFile": "app/index.html",
-  "authentication": "route",
+  "authenticationMethod": "route",
   "routes": [
+    {
+      "source": "/catalog/(.*)",
+        "destination": "hana-app-api",
+        "csrfProtection": true,
+        "authenticationType": "xsuaa"
+    },
     {
       "source": "^/app/(.*)$",
       "target": "$1",

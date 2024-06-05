@@ -2,36 +2,37 @@
   "name": "MyHANAApp",
   "version": "1.0.0",
   "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^7",
-    "@sap/cds-hana": "^2",
-    "@sap/hana-client": "^2.20.23",
-    "@sap/xssec": "^3",
-    "express": "^4"
-  },
-  "devDependencies": {
-    "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7",
-    "@sap/eslint-plugin-cds": "^3",
-    "@sap/hdi-deploy": "4.9.4",
-    "eslint": "^9"
+      "@sap/audit-logging": "^5.0.0",
+      "@sap/cds": "^6",
+      "@sap/hana-client": "^2.6.61",
+      "@sap/xsenv": "^3.1.0",
+      "@sap/xssec": "^3.2.0",
+      "express": "^4",
+      "passport": "^0.4.1"
   },
   "scripts": {
-    "start": "cds-serve"
+      "start": "cds serve srv/csn.json"
+  },
+  "engines": {
+      "node": "14.X"
   },
   "cds": {
-    "requires": {
-      "auth": "xsuaa",
-      "db": "hana",
-      "[production]": {
-        "auth": "xsuaa"
+      "build": {
+          "target": "."
+      },
+      "hana": {
+          "deploy-format": "hdbtable"
+      },
+      "requires": {
+          "db": {
+              "kind": "hana"
+          },
+          "uaa": {
+              "kind": "xsuaa"
+          }
       }
-    },
-    "hana": {
-      "deploy-format": "hdbtable"
-    }
   }
 }
